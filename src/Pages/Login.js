@@ -8,7 +8,6 @@ const Login = () => {
   const pwd = useRef();
   const [check, setcheck] = useState("");
   const { login } = useAuth();
-  const [loading, setloading] = useState(false);
   const history = useHistory();
 
   async function handlesubmit(e) {
@@ -16,14 +15,11 @@ const Login = () => {
 
     try {
       setcheck("");
-      setloading(true);
       await login(email.current.value, pwd.current.value);
       history.push("/");
     } catch {
       setcheck("Failed to login");
     }
-
-    setloading(false);
   }
 
   return (

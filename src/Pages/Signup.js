@@ -9,8 +9,7 @@ const Signup = () => {
   const pwd = useRef();
   const pwdconf = useRef();
   const [check, setcheck] = useState("");
-  const { signup, curuser } = useAuth();
-  const [loading, setloading] = useState(false);
+  const { signup } = useAuth();
 
   async function handlesubmit(e) {
     e.preventDefault();
@@ -21,14 +20,12 @@ const Signup = () => {
 
     try {
       setcheck("");
-      setloading(true);
       await signup(email.current.value, pwd.current.value);
       //   history.push("/");
     } catch {
       setcheck("Failed to signup");
     }
 
-    setloading(false);
   }
 
   return (
